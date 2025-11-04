@@ -13,7 +13,7 @@
 <ul>
   <li>Arturo Gordo</li>
   <li>Victor Sevilla</li>
-  <li>Jose Sanchez</li>
+  <li>José Sánchez Galeote</li>
   <li>Cristan Manuel</li>
   <li>Roberto Rodriguez</li>
 </ul>
