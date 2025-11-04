@@ -11,9 +11,9 @@
 
 <h2>Miembros del Proyecto:</h2>
 <ul>
-  <li>Arturo Gordo</li>
-  <li>Victor Sevilla</li>
+  <li>Arturo Gordo Arco</li>
+  <li>Victor Sevilla Perez</li>
   <li>José Sánchez Galeote</li>
-  <li>Cristhian Manuel</li>
-  <li>Roberto Rodriguez</li>
+  <li>Cristhian Camacho Tinoco</li>
+  <li>Roberto Rodriguez Zuñiga</li>
 </ul>
