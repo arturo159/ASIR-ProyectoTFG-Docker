@@ -1,1 +1,21 @@
+REPARTO DE TAREAS QUE HACEAR EN EL GRUPO ORIENTADO A LA FINALIZACION DEL TRABAJO:
 
+Arturo, Jose, Roberto, Cristhian y Victor:
+Todos ellos conocen como funciona docker como primer paso. Esto es mas que nada una introduccion para que no vayamos perdidos, sino que tengamos una idea de lo que estamos trabajando.
+
+Una vez hecho esto vamos a arealizar un script para que se instale de manera automatica el SO en docker elegido por un usuario mediante interfaz grafica.
+
+- Arturo:
+Script del SO Debian con/sin interfaz grafica.
+- Jose:
+Script del SO KaliLinux con/sin interfaz grafica.
+- Victor
+Script del SO Ubuntu con/sin interfaz grafica.
+- Roberto:
+Script del SO Windows10 con/sin interfaaz grafica.
+- Cristhian
+Script del SO WindowsServer con/sin interfaaz grafica.
+
+Como ultimo paso montaremos los scripts en una pagina web creada desde 0 y hecha por nosotros para que depende de las opciones que eliga el usuario,  sea una cosa u otra.
+
+(Tiempo estimmado: 1/2 meses)
