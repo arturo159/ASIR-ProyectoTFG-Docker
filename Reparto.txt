@@ -3,6 +3,8 @@ REPARTO DE TAREAS QUE HACEAR EN EL GRUPO ORIENTADO A LA FINALIZACION DEL TRABAJO
 Arturo, Jose, Roberto, Cristhian y Victor:
 Todos ellos conocen como funciona docker como primer paso. Esto es mas que nada una introduccion para que no vayamos perdidos, sino que tengamos una idea de lo que estamos trabajando.
 
+- Arturo y Victor miran la conexion  remota con interfaz grafica a dichos SO
+
 Una vez hecho esto vamos a arealizar un script para que se instale de manera automatica el SO en docker elegido por un usuario mediante interfaz grafica.
 
 - Arturo:
