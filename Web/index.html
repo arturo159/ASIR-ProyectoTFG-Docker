@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DockerSpawn</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+
+  <div class="bg-grid"></div>
+  <div class="scanlines"></div>
+
+  <header class="topbar">
+    <div class="topbar-logo">
+      <span class="logo-icon">⬡</span>
+      <span class="logo-text">DockerSpawn</span>
+    </div>
+    <nav class="topbar-links">
+      <a href="docs.html" class="nav-link">[ Doc ]</a>
+      <a href="https://github.com/arturo159/ASIR-ProyectoTFG-Docker.git" class="nav-link">[ GitHub ]</a>
+      <a href="index.html" class="nav-link">[ Inicio ]</a>
+    </nav>
+  </header>
+
+  <main class="main-wrapper">
+
+    <!-- STEPS INDICATOR -->
+    <div class="steps-bar">
+      <div class="step active">
+        <span class="step-num">01</span>
+        <span class="step-label">Sistema Operativo</span>
+      </div>
+      <div class="step-arrow">──▶</div>
+      <div class="step active">
+        <span class="step-num">02</span>
+        <span class="step-label">Tipo de Script</span>
+      </div>
+      <div class="step-arrow">──▶</div>
+      <div class="step active">
+        <span class="step-num">03</span>
+        <span class="step-label">Descarga</span>
+      </div>
+    </div>
+
+    <!-- FORM -->
+    <form id="spawn-form">
+
+      <!-- STEP 1: OS -->
+      <section class="card" id="section-os">
+        <div class="card-header">
+          <span class="card-tag">Paso 01</span>
+          <h2 class="card-title">¿Qué sistema operativo necesitas?</h2>
+        </div>
+        <div class="os-grid">
+          <label class="os-card" data-os="ubuntu">
+            <input type="radio" name="os" value="ubuntu" required />
+            <div class="os-card-inner">
+              <span class="os-dot" style="background:#E95420;"></span>
+              <span class="os-name">Xubuntu</span>
+              <span class="os-tag">24.04 LTS</span>
+            </div>
+          </label>
+          <label class="os-card" data-os="kali">
+            <input type="radio" name="os" value="kali" required />
+            <div class="os-card-inner">
+              <span class="os-dot" style="background:#367BF0;"></span>
+              <span class="os-name">Kali</span>
+              <span class="os-tag">2024.x</span>
+            </div>
+          </label>
+          <label class="os-card" data-os="windows">
+            <input type="radio" name="os" value="windows" required />
+            <div class="os-card-inner">
+              <span class="os-dot" style="background:#0078D4;"></span>
+              <span class="os-name">Windows</span>
+              <div class="win-version-selector" id="win-version-selector">
+                <label class="win-version" id="win-v10">
+                  <input type="radio" name="win_version" value="10" />
+                  <span>10</span>
+                </label>
+                <span class="win-version-sep">/</span>
+                <label class="win-version" id="win-v11">
+                  <input type="radio" name="win_version" value="11" />
+                  <span>11</span>
+                </label>
+              </div>
+            </div>
+          </label>
+        </div>
+      </section>
+
+      <!-- STEP 2: Script type -->
+      <section class="card" id="section-script">
+        <div class="card-header">
+          <span class="card-tag">Paso 02</span>
+          <h2 class="card-title">¿Qué tipo de script necesitas?</h2>
+        </div>
+        <div class="script-grid">
+          <label class="script-card" data-script="bash">
+            <input type="radio" name="script_type" value="bash" required />
+            <div class="script-card-inner">
+              <div class="script-icon">$_</div>
+              <div class="script-info">
+                <span class="script-name">Bash</span>
+                <span class="script-desc">Linux</span>
+              </div>
+              <span class="script-ext">.sh</span>
+            </div>
+          </label>
+          <label class="script-card" data-script="powershell">
+            <input type="radio" name="script_type" value="powershell" required />
+            <div class="script-card-inner">
+              <div class="script-icon">PS</div>
+              <div class="script-info">
+                <span class="script-name">PowerShell</span>
+                <span class="script-desc">Windows</span>
+              </div>
+              <span class="script-ext">.ps1</span>
+            </div>
+          </label>
+        </div>
+      </section>
+
+      <!-- STEP 3: VM Name -->
+      <section class="card" id="section-vmname">
+        <div class="card-header">
+          <span class="card-tag">Paso 03</span>
+          <h2 class="card-title">¿Cómo quieres llamar a la máquina virtual?</h2>
+        </div>
+        <div class="vmname-wrapper">
+          <span class="vmname-prefix">vm_name =</span>
+          <input
+            type="text"
+            id="vm-name"
+            class="vmname-input"
+            placeholder="mi-maquina"
+            autocomplete="off"
+            spellcheck="false"
+          />
+        </div>
+        <p class="vmname-hint"># Solo letras, números y guiones. Sin espacios.</p>
+      </section>
+
+      <!-- INFO -->
+      <section class="preview-box">
+        <div class="preview-header">
+          <span class="preview-dot red"></span>
+          <span class="preview-dot yellow"></span>
+          <span class="preview-dot green"></span>
+          <span class="preview-title">¿Qué hace este script?</span>
+        </div>
+        <div class="preview-code">
+          <span class="c-comment"># Selecciona tu sistema operativo y el tipo de script según tu plataforma.</span>
+          <br><br>
+          <span class="c-str">DockerSpawn</span> descargará un ejecutable listo para correr en Docker.
+          <br>
+          Al ejecutarlo, se desplegará automáticamente una máquina virtual con
+          <br>
+          el sistema operativo que hayas elegido, completamente configurada.
+          <br><br>
+          <span class="c-comment"># Bash  → para sistemas Linux.</span>
+          <br>
+          <span class="c-comment"># PowerShell → para sistemas Windows.</span>
+        </div>
+      </section>
+
+      <!-- SUBMIT -->
+      <div class="submit-row">
+        <button type="submit" class="btn-spawn" id="btn-submit">
+          <span class="btn-text">⬡ Descargar Script</span>
+          <span class="btn-arrow">→</span>
+        </button>
+      </div>
+
+    </form>
+
+  </main>
+
+  <footer class="footer">
+    <span>DockerSpawn // Script generator</span>
+    <span class="footer-sep">|</span>
+    <span>Uso personal. No distribuir sin permiso.</span>
+  </footer>
+
+  <script>
+    // feedback visual al seleccionar
+    document.querySelectorAll('.os-card input[name="os"], .script-card input').forEach(radio => {
+      radio.addEventListener('change', () => {
+        const name = radio.name;
+        document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+          r.closest('label').classList.remove('selected');
+        });
+        radio.closest('label').classList.add('selected');
+
+        // mostrar selector de versión solo si se elige Windows
+        if (name === 'os') {
+          const winSelector = document.getElementById('win-version-selector');
+          winSelector.classList.toggle('visible', radio.value === 'windows');
+          if (radio.value !== 'windows') {
+            document.querySelectorAll('input[name="win_version"]').forEach(r => r.checked = false);
+            document.querySelectorAll('.win-version').forEach(l => l.classList.remove('selected'));
+          }
+        }
+      });
+    });
+
+    // feedback visual versión Windows
+    document.querySelectorAll('input[name="win_version"]').forEach(radio => {
+      radio.addEventListener('change', () => {
+        document.querySelectorAll('.win-version').forEach(l => l.classList.remove('selected'));
+        radio.closest('label').classList.add('selected');
+      });
+    });
+
+    // descarga directa con nombre de VM
+    document.getElementById('spawn-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const os     = document.querySelector('input[name="os"]:checked');
+      const type   = document.querySelector('input[name="script_type"]:checked');
+      const vmName = document.getElementById('vm-name').value.trim();
+
+      if (!os || !type) {
+        alert('Selecciona un sistema operativo y un tipo de script.');
+        return;
+      }
+      if (os.value === 'windows') {
+        const winVersion = document.querySelector('input[name="win_version"]:checked');
+        if (!winVersion) {
+          alert('Selecciona la versión de Windows (10 u 11).');
+          return;
+        }
+      }
+      if (!vmName) {
+        alert('Escribe un nombre para la máquina virtual.');
+        return;
+      }
+      if (!/^[a-zA-Z0-9-]+$/.test(vmName)) {
+        alert('El nombre solo puede contener letras, números y guiones.');
+        return;
+      }
+
+      const extension = type.value === 'bash' ? 'sh' : 'ps1';
+      let osValue = os.value;
+      if (osValue === 'windows') {
+        const winVersion = document.querySelector('input[name="win_version"]:checked');
+        osValue = 'windows' + winVersion.value;
+      }
+      const filename = osValue + '.' + extension;
+      const url      = 'scripts/' + type.value + '/' + filename;
+
+      fetch(url)
+        .then(r => {
+          if (!r.ok) throw new Error('Archivo no encontrado.');
+          return r.text();
+        })
+        .then(content => {
+          const modified = content.replaceAll('__VM_NAME__', vmName);
+          const blob = new Blob([modified], { type: 'text/plain' });
+          const a = document.createElement('a');
+          a.href = URL.createObjectURL(blob);
+          a.download = filename;
+          a.click();
+          URL.revokeObjectURL(a.href);
+        })
+        .catch(() => alert('No se pudo descargar el script. Comprueba que el archivo existe.'));
+    });
+  </script>
+
+</body>
+</html>

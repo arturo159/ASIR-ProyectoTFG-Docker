@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DockerSpawn — Docs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="docs.css" />
+</head>
+<body>
+
+  <div class="bg-grid"></div>
+  <div class="scanlines"></div>
+
+  <header class="topbar">
+    <div class="topbar-logo">
+      <span class="logo-icon">⬡</span>
+      <span class="logo-text">DockerSpawn</span>
+    </div>
+    <nav class="topbar-links">
+      <a href="docs.html" class="nav-link">[ Doc ]</a>
+      <a href="https://github.com/arturo159/ASIR-ProyectoTFG-Docker.git" class="nav-link">[ GitHub ]</a>
+      <a href="index.html" class="nav-link">[ Inicio ]</a>
+    </nav>
+  </header>
+
+  <main class="main-wrapper">
+
+    <div class="page-header">
+      <span class="page-tag">DOCS</span>
+      <h1 class="page-title">Guía de Portainer</h1>
+      <p class="page-sub">Gestión visual de contenedores Docker</p>
+    </div>
+
+    <!-- ¿Por qué Portainer? -->
+    <section class="card">
+      <div class="card-header">
+        <span class="card-tag">01</span>
+        <h2 class="card-title">¿Por qué usamos Portainer?</h2>
+      </div>
+      <p class="card-text">
+        Docker cuenta con su propia CLI, pero para una administración visual eficiente de contenedores,
+        volúmenes, redes, imágenes y stacks, Portainer se ha posicionado como una de las mejores opciones.
+        Es ameno tanto en su instalación como en su uso diario.
+      </p>
+    </section>
+
+    <!-- ¿Qué es? -->
+    <section class="card">
+      <div class="card-header">
+        <span class="card-tag">02</span>
+        <h2 class="card-title">¿Qué es Portainer?</h2>
+      </div>
+      <p class="card-text">
+        Portainer es una plataforma de gestión de contenedores con interfaz gráfica web, diseñada para
+        administrar entornos Docker, Docker Swarm y Kubernetes sin necesidad de usar la línea de comandos
+        para las tareas del día a día.
+      </p>
+      <p class="card-text mt">
+        Convierte comandos complejos de Docker en clics simples desde el navegador, ideal tanto para
+        administradores experimentados como para equipos que necesitan gestionar infraestructura
+        contenerizada sin dominar toda la CLI.
+      </p>
+    </section>
+
+    <!-- ¿Para qué? -->
+    <section class="card">
+      <div class="card-header">
+        <span class="card-tag">03</span>
+        <h2 class="card-title">¿Para qué usamos Portainer?</h2>
+      </div>
+      <p class="card-text">
+        Portainer permite visualizar, crear, gestionar y monitorear todos los recursos de Docker sin
+        necesidad de ejecutar comandos constantemente en terminal. Esto nos da ventaja a la hora de:
+      </p>
+      <ul class="card-list">
+        <li>Administrar volúmenes siempre activos</li>
+        <li>Desplegar contenedores de manera eficiente</li>
+        <li>Gestionar redes y stacks</li>
+        <li>Visualizar logs en tiempo real</li>
+        <li>Controlar recursos como memoria, disco y CPU</li>
+      </ul>
+    </section>
+
+    <!-- Instalación manual -->
+    <section class="card">
+      <div class="card-header">
+        <span class="card-tag">04</span>
+        <h2 class="card-title">Instalación Manual</h2>
+      </div>
+
+      <div class="step-block">
+        <span class="step-num">Paso 1</span>
+        <h3 class="step-title">Creación del volumen persistente</h3>
+        <p class="card-text">
+          Antes de arrancar cualquier contenedor hay que asegurarse de que los datos no se pierdan.
+          Creamos un volumen con nombre para que la configuración, usuarios y datos de Portainer persistan
+          aunque el contenedor se borre o recree.
+        </p>
+        <div class="code-box">
+          <pre>docker volume create portainer_data</pre>
+        </div>
+        <p class="card-text mt">
+          En este volumen vivirá la base de datos interna de Portainer: usuarios, configuraciones,
+          entornos y credenciales.
+        </p>
+      </div>
+
+      <div class="step-block">
+        <span class="step-num">Paso 2</span>
+        <h3 class="step-title">Despliegue del contenedor</h3>
+        <p class="card-text">Con el volumen listo, lanzamos el contenedor oficial de Portainer CE:</p>
+        <div class="code-box">
+          <pre>
+                docker run -d \
+                --name portainer \
+                --restart=always \
+                -p 8000:8000 \
+                -p 9443:9443 \
+                -v /var/run/docker.sock:/var/run/docker.sock \
+                -v portainer_data:/data \
+                portainer/portainer-ce:latest
+            </pre>
+        </div>
+      </div>
+
+      <div class="step-block">
+        <span class="step-num">Paso 3</span>
+        <h3 class="step-title">Acceso y configuración inicial</h3>
+        <p class="card-text">Con el contenedor en marcha, abrimos el navegador y accedemos a:</p>
+        <div class="code-box">
+          <pre>https://localhost:9443</pre>
+        </div>
+        <p class="card-text mt">
+          El navegador avisará de que el certificado no es de confianza — es lo habitual con certificados
+          autofirmados. Aceptamos la excepción y continuamos.
+        </p>
+        <p class="card-text mt">
+          La primera vez Portainer pide crear el usuario administrador. Elegimos <span class="inline-code">admin</span> como
+          nombre y una contraseña segura. Después seleccionamos el entorno local, que aparece
+          automáticamente al haber montado el socket de Docker, y le damos a <span class="inline-code">Connect</span>.
+        </p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <span>DockerSpawn // Docs</span>
+    <span class="footer-sep">|</span>
+    <span>Uso personal. No distribuir sin permiso.</span>
+  </footer>
+
+</body>
+</html>
